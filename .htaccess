@@ -1,0 +1,25 @@
+# Force PHP 8.4
+AddHandler application/x-httpd-php84 .php
+
+# Alternatively, if the above doesn't work, try:
+# AddType application/x-httpd-php84 .php
+
+# Security: block direct access to sensitive files
+<FilesMatch "\.(env|log|sql|sh|json|lock)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block access to pw.php
+<Files "pw.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to test files
+<FilesMatch "^test_">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+Options -Indexes
