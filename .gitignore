@@ -1,0 +1,77 @@
+# ============================================================
+# Git Ignore - Sensitive Files and Configuration
+# ============================================================
+# DO NOT REMOVE - Critical for security
+
+# Environment Configuration (NEVER COMMIT)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Sensitive Files
+pw.php
+password_*.php
+*_secret*.php
+*_private*.php
+
+# System Files
+error_log
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+vendor/
+node_modules/
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+
+# Testing
+test_connection.php
+test_smtp.php
+test_*.php
+
+# OS
+.gitignore~
+
+# Production Build
+build/
+dist/
+
+# Database Dumps (sensitive data)
+sql/
+*.sql
+
+# Large/Binary Video Backups
+video/*.back
+video/*.back2
+video/*.bak
+*.BACK
+*.BACK2
+
+# Backup/original files (not needed in repo)
+*_original*.php
+*.php.2
+*.php.l
+
+# Access tokens / secrets
+taccess
+
+# Info files
+info.php
+
+# ============================================================
+# NOTE: These patterns prevent accidental credential commits.
+# Verify important files are listed here before each push!
+# ============================================================
