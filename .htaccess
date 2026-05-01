@@ -1,8 +1,16 @@
-# Force PHP 8.4
+# Force PHP 8.4 and require index.php as default page
+DirectoryIndex index.php
 AddHandler application/x-httpd-php84 .php
+AddType application/x-httpd-php84 .php
 
-# Alternatively, if the above doesn't work, try:
-# AddType application/x-httpd-php84 .php
+# If the host uses a different handler, uncomment one of these lines:
+# AddHandler application/x-httpd-php82 .php
+# AddHandler application/x-httpd-php8 .php
+# AddType application/x-httpd-php82 .php
+# AddType application/x-httpd-php8 .php
+
+RewriteEngine On
+RewriteRule ^$ index.php [L]
 
 # Security: block direct access to sensitive files
 <FilesMatch "\.(env|log|sql|sh|json|lock)$">
