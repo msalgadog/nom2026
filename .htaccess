@@ -1,5 +1,2 @@
 DirectoryIndex index.php
-AddHandler application/x-httpd-alt-php84___lsphp .php
-
-# If PHP is still downloaded, this host may not honor .htaccess or is using a different PHP handler.
-# In that case, the server must be configured through cPanel/MultiPHP Manager or the hosting panel.
+AddHandler application/x-httpd-ea-php84 .php
