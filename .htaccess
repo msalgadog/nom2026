@@ -1,20 +1,5 @@
-# Force PHP 8.4 using the GoDaddy/alt-php handler that works on this host
 DirectoryIndex index.php
 AddHandler application/x-httpd-alt-php84___lsphp .php
-AddType application/x-httpd-alt-php84___lsphp .php
 
-# If this host requires only the handler line, keep this file minimal.
-# The two lines above should ensure .php files are executed instead of downloaded.
-
-# Prevent direct access to sensitive files if .htaccess is honored.
-<FilesMatch "\.(env|log|sql|sh|json|lock)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-
-<Files "pw.php">
-    Order allow,deny
-    Deny from all
-</Files>
-
-Options -Indexes
+# If PHP is still downloaded, this host may not honor .htaccess or is using a different PHP handler.
+# In that case, the server must be configured through cPanel/MultiPHP Manager or the hosting panel.
