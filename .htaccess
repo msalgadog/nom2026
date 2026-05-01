@@ -1,33 +1,20 @@
-# Force PHP 8.4 and require index.php as default page
+# Force PHP 8.4 using the GoDaddy/alt-php handler that works on this host
 DirectoryIndex index.php
-AddHandler application/x-httpd-php84 .php
-AddType application/x-httpd-php84 .php
+AddHandler application/x-httpd-alt-php84___lsphp .php
+AddType application/x-httpd-alt-php84___lsphp .php
 
-# If the host uses a different handler, uncomment one of these lines:
-# AddHandler application/x-httpd-php82 .php
-# AddHandler application/x-httpd-php8 .php
-# AddType application/x-httpd-php82 .php
-# AddType application/x-httpd-php8 .php
+# If this host requires only the handler line, keep this file minimal.
+# The two lines above should ensure .php files are executed instead of downloaded.
 
-RewriteEngine On
-RewriteRule ^$ index.php [L]
-
-# Security: block direct access to sensitive files
+# Prevent direct access to sensitive files if .htaccess is honored.
 <FilesMatch "\.(env|log|sql|sh|json|lock)$">
-    Order Allow,Deny
+    Order allow,deny
     Deny from all
 </FilesMatch>
 
-# Block access to pw.php
 <Files "pw.php">
-    Order Allow,Deny
+    Order allow,deny
     Deny from all
 </Files>
-
-# Block access to test files
-<FilesMatch "^test_">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
 
 Options -Indexes
